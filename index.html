@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dice Roller with Random Image</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .dice {
+      font-size: 140px;
+      margin-top: 20px;
+    }
+    .reaction img {
+      width: 200px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Roll a D6</h1>
+  <button onclick="rollDice()">Roll</button>
+
+  <div class="dice" id="diceDisplay"></div>
+  <div class="reaction" id="reactionImage"></div>
+
+<script>
+  const diceFaces = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+  const images = ['image1.png','image2.png','image3.png','image4.png','image5.png','image6.png','image7.png','image8.png', 'image9.png','image10.png'];
+  let currentIndex = 0;
+
+  function rollDice() {
+    // Roll dice
+    const roll = Math.floor(Math.random() * 6);
+    document.getElementById('diceDisplay').textContent = diceFaces[roll];
+
+    // Show the next image in order
+    const imgContainer = document.getElementById('reactionImage');
+    imgContainer.innerHTML = `<img src="${images[currentIndex]}" alt="Reaction">`;
+
+    // Increment index (loop back to 0)
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+</script>
+
+  </script>
+</body>
+</html>
